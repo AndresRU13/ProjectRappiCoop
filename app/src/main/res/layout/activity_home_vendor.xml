@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Home.Home_vendor">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/tool"
+        />
+
+    <TextView
+        android:id="@+id/Titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tituloG"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:text="@string/sProduct"
+        android:textSize="20dp"
+        android:onClick="searchProdruct"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:text="@string/cOrder"
+        android:textSize="20dp"
+        android:onClick="createOrder"
+        />
+
+</LinearLayout>

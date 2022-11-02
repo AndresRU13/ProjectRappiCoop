@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_details.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_add_product.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_create_order.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_delete_product.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_login.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_register.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_search_product.xml" value="0.22" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_home_vendor.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_results.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/lista_item_producto.xml" value="0.25" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
