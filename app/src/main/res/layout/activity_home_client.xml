@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Home.Home_vendor">
-
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/tool"
-        />
+    tools:context=".Home.Home_client"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/Titulo"
@@ -45,4 +40,13 @@
         android:onClick="searchProdruct"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:text="@string/cOrder"
+        android:textSize="20dp"
+        android:onClick="createOrder"
+        />
 </LinearLayout>

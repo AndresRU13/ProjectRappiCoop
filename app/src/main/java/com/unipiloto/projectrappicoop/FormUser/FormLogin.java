@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
 import com.unipiloto.projectrappicoop.DataBase.Utilidades;
+import com.unipiloto.projectrappicoop.FormOrder.FormCreateOrder;
+import com.unipiloto.projectrappicoop.Home.Home_client;
+import com.unipiloto.projectrappicoop.Home.Home_repartidor;
 import com.unipiloto.projectrappicoop.Home.Home_vendor;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.Objects.Users;
@@ -43,11 +46,20 @@ public class FormLogin extends AppCompatActivity {
             if (checkuser == false) {
                 boolean checkpass = checkPass(password);
                 if (checkpass == false) {
-                    //boolean chekrol = checkRol(email);
-
-                    Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(this, Home_vendor.class);
-                    startActivity(i);
+                    String chekrol = checkRol(email);
+                    if (chekrol.contentEquals("Vendedor")) {
+                        Toast.makeText(this, "Bienvenido como Vendedor", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(this, Home_vendor.class);
+                        startActivity(i);
+                    } else if (chekrol.contentEquals("Cliente")){
+                        Toast.makeText(this, "Bienvenido como Cliente", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(this, Home_client.class);
+                        startActivity(intent);
+                    } else if (chekrol.contentEquals("Repartidor")){
+                        Toast.makeText(this, "Bienvenido como Repartidor", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(this, Home_repartidor.class);
+                        startActivity(intent);
+                    }
                 } else
                     Toast.makeText(this, "La Contraseña es INCORRECTA", Toast.LENGTH_LONG).show();
             }else
@@ -102,20 +114,19 @@ public class FormLogin extends AppCompatActivity {
             return true;
     }
 
-    private boolean checkRol(String email) {
+    private String checkRol(String email) {
         ConexionSQLiteHelper con = new ConexionSQLiteHelper(getApplicationContext(), "bd_rappicoop", null, 1);
         SQLiteDatabase db = con.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_USUARIO + " WHERE " + Utilidades.US_EMAIL + " = ?", new String[] {email});
+        String[] param = {email};
+        String[] field = {Utilidades.US_ROL};
 
-        Users user = new Users();
-        while (cursor.moveToFirst()){
-            user.setRol(cursor.getString(6));
+            Cursor cursor = db.query(Utilidades.TABLA_USUARIO, field, Utilidades.US_EMAIL + " = ?", param,  null, null, null);
+            cursor.moveToFirst();
 
-        }
-        if (user.getRol() == "Cliente")
-            return false;
-        else
-            return true;
+            String res = cursor.getString(0);
+            cursor.close();
+
+        return res;
     }
 }

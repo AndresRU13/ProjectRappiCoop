@@ -1,16 +1,20 @@
-package com.unipiloto.projectrappicoop.FormOrder;
+package com.unipiloto.projectrappicoop.FormProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
 import com.unipiloto.projectrappicoop.DataBase.Utilidades;
@@ -19,30 +23,30 @@ import com.unipiloto.projectrappicoop.R;
 
 import java.util.ArrayList;
 
-public class FormCreateOrder extends AppCompatActivity {
+public class FormSearchProductClient extends AppCompatActivity implements SearchView.OnQueryTextListener  {
 
     ArrayList<String> listaInformacion;
     ArrayList<Products> listaProductos;
     ListView listarProductos;
-    TextView total;
+    SearchView txtBuscar;
+    TextView name, value, expedition;
 
     ConexionSQLiteHelper con;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_create_order);
-
+        setContentView(R.layout.activity_form_search_product_client);
         con = new ConexionSQLiteHelper(getApplicationContext(), "bd_rappicoop", null, 1);
 
-        total = findViewById(R.id.total);
-
-        Toolbar toolbar = findViewById(R.id.tool);
-        setSupportActionBar(toolbar);
+        txtBuscar = findViewById(R.id.buscar);
+        listarProductos = findViewById(R.id.listViewProducts);
+        name = findViewById(R.id.name);
+        value = findViewById(R.id.value);
+        expedition = findViewById(R.id.expedition);
 
         MostrarProductos();
 
-        listarProductos = findViewById(R.id.listProducts);
         ArrayAdapter adapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -52,16 +56,19 @@ public class FormCreateOrder extends AppCompatActivity {
         listarProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int tot = 0;
+                Products prod = listaProductos.get(i);
+                Intent intent = new Intent(FormSearchProductClient.this, Details.class);
 
-                tot += Integer.parseInt(listaInformacion.get(1));
+                Bundle bundle = new Bundle();
 
-                total.setText(tot);
+                bundle.putSerializable("producto", prod);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
-    }
 
-    public void addOrder(View view) {
+        txtBuscar.setOnQueryTextListener(this);
     }
 
     private void MostrarProductos() {
@@ -73,6 +80,7 @@ public class FormCreateOrder extends AppCompatActivity {
 
         while (cursor.moveToNext()){
             products = new Products();
+            products.setId(cursor.getInt(0));
             products.setNombre(cursor.getString(1));
             products.setDescripcion(cursor.getString(2));
             products.setValor(cursor.getString(3));
@@ -93,4 +101,36 @@ public class FormCreateOrder extends AppCompatActivity {
                     listaProductos.get(i).getValor() + " - " + listaProductos.get(i).getLocal());
         }
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        SQLiteDatabase db = con.getReadableDatabase();
+        String[] param = {s};
+        String[] field = {Utilidades.PRO_NOMBRE, Utilidades.PRO_VALOR, Utilidades.PRO_EXPEDICION};
+
+        try {
+            Cursor cursor = db.query(Utilidades.TABLA_PRODUCTO, field, Utilidades.PRO_NOMBRE + " = ?", param,  null, null, null);
+            cursor.moveToFirst();
+
+            name.setText(cursor.getString(0));
+            value.setText("$ " + cursor.getString(1));
+            expedition.setText(cursor.getString(2));
+            cursor.close();
+        }catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Producto NO Existe", Toast.LENGTH_LONG).show();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
+    }
+
 }

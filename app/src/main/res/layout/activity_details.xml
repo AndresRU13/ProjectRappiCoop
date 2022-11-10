@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/detailsP"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_gravity="center"
         />
@@ -46,7 +46,6 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"
-            android:enabled="false"
             />
 
         <TextView
@@ -69,7 +68,6 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"
-            android:enabled="false"
             />
 
         <TextView
@@ -92,7 +90,6 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"
-            android:enabled="false"
             />
 
         <TextView
@@ -115,7 +112,6 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"
-            android:enabled="false"
             />
 
         <TextView
@@ -138,7 +134,6 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:backgroundTint="@color/black"
-            android:enabled="false"
             />
 
         <TextView
@@ -168,14 +163,29 @@
 
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/actualizar"
+    <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
         android:layout_gravity="right"
         android:clickable="true"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:backgroundTint="@color/purple_700"
+        android:onClick="deleteProdruct"
+        /> -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="right"
+        android:clickable="true"
         android:src="@drawable/ic_baseline_update_24"
         android:backgroundTint="@color/purple_700"
+        android:onClick="updateProduct"
         />
+
 </LinearLayout>

@@ -36,4 +36,6 @@
     <string name="buscar">Buscar</string>
     <string name="maps">Google Maps</string>
     <string name="detailsP">DETALLES</string>
+    <string name="lOrder">Ver Pedidos Disponibles</string>
+    <string name="Llegada">Entrega</string>
 </resources>

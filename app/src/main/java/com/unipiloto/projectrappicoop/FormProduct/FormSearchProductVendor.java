@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
@@ -22,12 +24,13 @@ import com.unipiloto.projectrappicoop.R;
 
 import java.util.ArrayList;
 
-public class FormSearchProduct extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class FormSearchProductVendor extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     ArrayList<String> listaInformacion;
     ArrayList<Products> listaProductos;
     ListView listarProductos;
     SearchView txtBuscar;
+    TextView name, value, expedition;
 
     FloatingActionButton agregar_Producto;
 
@@ -36,16 +39,19 @@ public class FormSearchProduct extends AppCompatActivity implements SearchView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_search_product);
+        setContentView(R.layout.activity_form_search_product_vendor);
 
         con = new ConexionSQLiteHelper(getApplicationContext(), "bd_rappicoop", null, 1);
 
         txtBuscar = findViewById(R.id.buscar);
         listarProductos = findViewById(R.id.listViewProducts);
+        name = findViewById(R.id.name);
+        value = findViewById(R.id.value);
+        expedition = findViewById(R.id.expedition);
 
         agregar_Producto = (FloatingActionButton) findViewById(R.id.agregar);
 
-        ConsultarProductos();
+        MostrarProductos();
 
         ArrayAdapter adapter = new ArrayAdapter(
                 this,
@@ -57,7 +63,7 @@ public class FormSearchProduct extends AppCompatActivity implements SearchView.O
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Products prod = listaProductos.get(i);
-                Intent intent = new Intent(FormSearchProduct.this, Details.class);
+                Intent intent = new Intent(FormSearchProductVendor.this, Details.class);
 
                 Bundle bundle = new Bundle();
 
@@ -78,7 +84,7 @@ public class FormSearchProduct extends AppCompatActivity implements SearchView.O
         txtBuscar.setOnQueryTextListener(this);
     }
 
-    private void ConsultarProductos() {
+    private void MostrarProductos() {
         SQLiteDatabase db = con.getReadableDatabase();
 
         Products products = null;
@@ -87,6 +93,7 @@ public class FormSearchProduct extends AppCompatActivity implements SearchView.O
 
         while (cursor.moveToNext()){
             products = new Products();
+            products.setId(cursor.getInt(0));
             products.setNombre(cursor.getString(1));
             products.setDescripcion(cursor.getString(2));
             products.setValor(cursor.getString(3));
@@ -121,13 +128,27 @@ public class FormSearchProduct extends AppCompatActivity implements SearchView.O
 
     @Override
     public boolean onQueryTextSubmit(String s) {
+        SQLiteDatabase db = con.getReadableDatabase();
+        String[] param = {s};
+        String[] field = {Utilidades.PRO_NOMBRE, Utilidades.PRO_VALOR, Utilidades.PRO_EXPEDICION};
+
+        try {
+            Cursor cursor = db.query(Utilidades.TABLA_PRODUCTO, field, Utilidades.PRO_NOMBRE + " = ?", param,  null, null, null);
+            cursor.moveToFirst();
+
+            name.setText(cursor.getString(0));
+            value.setText("$ " + cursor.getString(1));
+            expedition.setText(cursor.getString(2));
+            cursor.close();
+        }catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Producto NO Existe", Toast.LENGTH_LONG).show();
+        }
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String s) {
-
-        return true;
+        return false;
     }
 
 }

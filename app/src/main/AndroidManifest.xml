@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.unipiloto.projectrappicoop">
+    package="com.unipiloto.projectrappicoop" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,7 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".FormOrder.FormSearchOrder"
+            android:exported="false" />
+
+        <service
+            android:name=".Services.VendorService"
+            android:exported="false" />
+        <service
+            android:name=".Services.ClientService"
+            android:exported="false" />
+
+        <activity
+            android:name=".FormProduct.FormSearchProductClient"
+            android:exported="false" />
+        <activity
+            android:name=".FormProduct.FormSearchProductClient"
+            android:exported="false" />
+        <activity
+            android:name=".Home.Home_repartidor"
+            android:exported="false" />
+        <activity
+            android:name=".Home.Home_client"
+            android:exported="false" />
         <activity
             android:name=".FormProduct.Details"
             android:exported="false" />
@@ -22,7 +45,7 @@
             android:name=".FormOrder.FormCreateOrder"
             android:exported="false" />
         <activity
-            android:name=".FormProduct.FormSearchProduct"
+            android:name=".FormProduct.FormSearchProductVendor"
             android:exported="false" />
         <activity
             android:name=".FormProduct.FormDeleteProduct"
@@ -39,7 +62,7 @@
             android:label="@string/aProduct" />
         <activity
             android:name=".FormUser.FormLogin"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

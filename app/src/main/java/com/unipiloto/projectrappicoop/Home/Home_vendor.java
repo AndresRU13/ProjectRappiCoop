@@ -4,18 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.unipiloto.projectrappicoop.FormOrder.FormCreateOrder;
 import com.unipiloto.projectrappicoop.FormProduct.FormAddProduct;
 import com.unipiloto.projectrappicoop.FormProduct.FormDeleteProduct;
-import com.unipiloto.projectrappicoop.FormProduct.FormSearchProduct;
+import com.unipiloto.projectrappicoop.FormProduct.FormSearchProductVendor;
 import com.unipiloto.projectrappicoop.FormUser.FormLogin;
 import com.unipiloto.projectrappicoop.R;
 
@@ -55,7 +51,7 @@ public class Home_vendor extends AppCompatActivity {
                 return true;
 
             case R.id.action_Search:
-                Intent intent2 = new Intent(this, FormSearchProduct.class);
+                Intent intent2 = new Intent(this, FormSearchProductVendor.class);
                 startActivity(intent2);
                 return true;
 
@@ -65,12 +61,7 @@ public class Home_vendor extends AppCompatActivity {
     }
 
     public void searchProdruct(View view) {
-        Intent intent = new Intent(this, FormSearchProduct.class);
-        startActivity(intent);
-    }
-
-    public void createOrder(View view) {
-        Intent intent = new Intent(this, FormCreateOrder.class);
+        Intent intent = new Intent(this, FormSearchProductVendor.class);
         startActivity(intent);
     }
 }

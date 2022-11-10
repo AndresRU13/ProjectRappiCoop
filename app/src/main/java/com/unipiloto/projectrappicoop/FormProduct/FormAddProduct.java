@@ -38,7 +38,6 @@ public class FormAddProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_add_product);
 
-
         editNombre = (EditText) findViewById(R.id.editName);
         editDescripcion = (EditText) findViewById(R.id.editdescrip);
         editValor = (EditText) findViewById(R.id.editValue);

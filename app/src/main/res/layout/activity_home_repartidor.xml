@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Home.Home_vendor">
-
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/tool"
-        />
+    tools:context=".Home.Home_repartidor">
 
     <TextView
         android:id="@+id/Titulo"
@@ -40,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginRight="15dp"
-        android:text="@string/sProduct"
+        android:text="@string/lOrder"
         android:textSize="20dp"
-        android:onClick="searchProdruct"
+        android:onClick="listaPedidos"
         />
 
 </LinearLayout>

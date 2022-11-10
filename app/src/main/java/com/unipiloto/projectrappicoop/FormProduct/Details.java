@@ -2,31 +2,39 @@ package com.unipiloto.projectrappicoop.FormProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
 import com.unipiloto.projectrappicoop.DataBase.Utilidades;
+import com.unipiloto.projectrappicoop.FormOrder.FormCreateOrder;
+import com.unipiloto.projectrappicoop.Home.Home_vendor;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.R;
 
+import java.util.ArrayList;
+
 public class Details extends AppCompatActivity {
 
+    ConexionSQLiteHelper con;
     EditText nombre, descripcion, valor, local, expedicion, categoria;
-    FloatingActionButton actualizar;
 
-    public static final String EXTRA = "productId";
-
-    Products products;
+    Products prod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        con = new ConexionSQLiteHelper(this, "bd_rappicoop", null, 1);
 
         nombre = findViewById(R.id.viewNombre);
         descripcion = findViewById(R.id.viewDescripcion);
@@ -36,7 +44,7 @@ public class Details extends AppCompatActivity {
         categoria = findViewById(R.id.viewCategoria);
 
         Bundle objSend = getIntent().getExtras();
-        Products prod = null;
+        prod = null;
 
         if (objSend != null){
             prod = (Products) objSend.getSerializable("producto");
@@ -47,5 +55,44 @@ public class Details extends AppCompatActivity {
             expedicion.setText(prod.getExpedicion().toString());
             categoria.setText(prod.getCategoria().toString());
         }
+    }
+
+    public void updateProduct(View view) {
+        SQLiteDatabase db = con.getWritableDatabase();
+
+        String[] param = {prod.getNombre().toString()};
+
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.PRO_NOMBRE, nombre.getText().toString());
+        values.put(Utilidades.PRO_DESCRIPCION, descripcion.getText().toString());
+        values.put(Utilidades.PRO_VALOR, valor.getText().toString());
+        values.put(Utilidades.PRO_LOCAL, local.getText().toString());
+        values.put(Utilidades.PRO_EXPEDICION, expedicion.getText().toString());
+
+        db.update(Utilidades.TABLA_PRODUCTO, values, Utilidades.PRO_NOMBRE + " = ?", param);
+
+        Toast.makeText(this, "Actualizacion Exitosa", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, Home_vendor.class);
+
+        startActivity(intent);
+        db.close();
+    }
+
+    public void deleteProdruct(View view) {
+        SQLiteDatabase db = con.getWritableDatabase();
+
+        String[] param = {nombre.getText().toString()};
+
+        db.delete(Utilidades.TABLA_PRODUCTO, Utilidades.PRO_NOMBRE + " = ?", param);
+
+        Toast.makeText(this, "Producto Eliminado Exitosa", Toast.LENGTH_LONG).show();
+        db.close();
+        nombre.setText("");
+        descripcion.setText("");
+        valor.setText("");
+        local.setText("");
+        expedicion.setText("");
+        categoria.setText("");
     }
 }
