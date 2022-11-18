@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_carrito_compras.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_details.xml" value="0.25" />
-        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_add_product.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_details_client.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_details_order.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_details_vendor.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_add_product.xml" value="0.25" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_create_order.xml" value="0.25" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_delete_product.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_login.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_register.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_register_order.xml" value="0.18070652173913043" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_search_order.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_search_product.xml" value="0.22" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_search_product_client.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_form_search_product_vendor.xml" value="0.1766304347826087" />
@@ -17,6 +23,10 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_home_repartidor.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_home_vendor.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/activity_results.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/item_rv_carro_compras.xml" value="0.18070652173913043" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/item_rv_productos.xml" value="0.18070652173913043" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/lista_item_orden.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/lista_item_order.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/lista_item_producto.xml" value="0.25" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ProjectRappiCoop/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />

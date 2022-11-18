@@ -1,35 +1,31 @@
 package com.unipiloto.projectrappicoop.FormProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
+import com.unipiloto.projectrappicoop.Adaptadores.AdaptadorProductos;
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
 import com.unipiloto.projectrappicoop.DataBase.Utilidades;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class FormSearchProductClient extends AppCompatActivity implements SearchView.OnQueryTextListener  {
+public class FormSearchProductClient extends AppCompatActivity {
 
-    ArrayList<String> listaInformacion;
-    ArrayList<Products> listaProductos;
-    ListView listarProductos;
-    SearchView txtBuscar;
-    TextView name, value, expedition;
+    Button btnVerCarro;
+    RecyclerView rvListaProductos;
+    AdaptadorProductos adaptador;
+
+    List<Products> listaProductos;
+    List<Products> carroCompras = new ArrayList<>();
 
     ConexionSQLiteHelper con;
 
@@ -39,36 +35,14 @@ public class FormSearchProductClient extends AppCompatActivity implements Search
         setContentView(R.layout.activity_form_search_product_client);
         con = new ConexionSQLiteHelper(getApplicationContext(), "bd_rappicoop", null, 1);
 
-        txtBuscar = findViewById(R.id.buscar);
-        listarProductos = findViewById(R.id.listViewProducts);
-        name = findViewById(R.id.name);
-        value = findViewById(R.id.value);
-        expedition = findViewById(R.id.expedition);
+        btnVerCarro = findViewById(R.id.verOrden);
+        rvListaProductos = findViewById(R.id.rvListaProductos);
+        rvListaProductos.setLayoutManager(new GridLayoutManager(this, 1));
 
         MostrarProductos();
 
-        ArrayAdapter adapter = new ArrayAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                listaInformacion);
-        listarProductos.setAdapter(adapter);
-
-        listarProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Products prod = listaProductos.get(i);
-                Intent intent = new Intent(FormSearchProductClient.this, Details.class);
-
-                Bundle bundle = new Bundle();
-
-                bundle.putSerializable("producto", prod);
-
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-
-        txtBuscar.setOnQueryTextListener(this);
+        adaptador = new AdaptadorProductos(this, btnVerCarro, listaProductos, carroCompras);
+        rvListaProductos.setAdapter(adaptador);
     }
 
     private void MostrarProductos() {
@@ -90,47 +64,6 @@ public class FormSearchProductClient extends AppCompatActivity implements Search
 
             listaProductos.add(products);
         }
-        ObtenerLista();
-    }
-
-    private void ObtenerLista() {
-        listaInformacion = new ArrayList<String>();
-
-        for (int i = 0; i < listaProductos.size(); i++){
-            listaInformacion.add(listaProductos.get(i).getNombre() + "\n" +
-                    listaProductos.get(i).getValor() + " - " + listaProductos.get(i).getLocal());
-        }
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-        SQLiteDatabase db = con.getReadableDatabase();
-        String[] param = {s};
-        String[] field = {Utilidades.PRO_NOMBRE, Utilidades.PRO_VALOR, Utilidades.PRO_EXPEDICION};
-
-        try {
-            Cursor cursor = db.query(Utilidades.TABLA_PRODUCTO, field, Utilidades.PRO_NOMBRE + " = ?", param,  null, null, null);
-            cursor.moveToFirst();
-
-            name.setText(cursor.getString(0));
-            value.setText("$ " + cursor.getString(1));
-            expedition.setText(cursor.getString(2));
-            cursor.close();
-        }catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Producto NO Existe", Toast.LENGTH_LONG).show();
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-        return false;
     }
 
 }

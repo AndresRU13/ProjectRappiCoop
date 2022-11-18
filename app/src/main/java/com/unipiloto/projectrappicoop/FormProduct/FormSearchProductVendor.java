@@ -63,7 +63,7 @@ public class FormSearchProductVendor extends AppCompatActivity implements Search
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Products prod = listaProductos.get(i);
-                Intent intent = new Intent(FormSearchProductVendor.this, Details.class);
+                Intent intent = new Intent(FormSearchProductVendor.this, DetailsVendor.class);
 
                 Bundle bundle = new Bundle();
 

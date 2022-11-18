@@ -1,30 +1,30 @@
 package com.unipiloto.projectrappicoop.FormOrder;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.unipiloto.projectrappicoop.Adaptadores.AdaptadorCarroCompras;
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
-import com.unipiloto.projectrappicoop.DataBase.Utilidades;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.R;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.List;
 
 public class FormCreateOrder extends AppCompatActivity {
 
-    ArrayList<String> listaInformacion;
-    ArrayList<Products> listaProductos;
-    ListView listarProductos;
-    TextView total;
+    List<Products> carroCompras;
+
+    AdaptadorCarroCompras adaptador;
+
+    RecyclerView rvListaCarro;
+    TextView tvTotal;
 
     ConexionSQLiteHelper con;
 
@@ -35,62 +35,19 @@ public class FormCreateOrder extends AppCompatActivity {
 
         con = new ConexionSQLiteHelper(getApplicationContext(), "bd_rappicoop", null, 1);
 
-        total = findViewById(R.id.total);
+        carroCompras = (List<Products>) getIntent().getSerializableExtra("CarroCompras");
 
-        Toolbar toolbar = findViewById(R.id.tool);
-        setSupportActionBar(toolbar);
+        rvListaCarro = findViewById(R.id.rvListaCarro);
+        rvListaCarro.setLayoutManager(new GridLayoutManager(this, 1));
+        tvTotal = findViewById(R.id.total);
 
-        MostrarProductos();
-
-        listarProductos = findViewById(R.id.listProducts);
-        ArrayAdapter adapter = new ArrayAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                listaInformacion);
-        listarProductos.setAdapter(adapter);
-
-        listarProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int tot = 0;
-
-                tot += Integer.parseInt(listaInformacion.get(1));
-
-                total.setText(tot);
-            }
-        });
+        adaptador = new AdaptadorCarroCompras(this, carroCompras, tvTotal);
+        rvListaCarro.setAdapter(adaptador);
     }
 
-    public void addOrder(View view) {
-    }
-
-    private void MostrarProductos() {
-        SQLiteDatabase db = con.getReadableDatabase();
-
-        Products products = null;
-        listaProductos = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PRODUCTO, null);
-
-        while (cursor.moveToNext()){
-            products = new Products();
-            products.setNombre(cursor.getString(1));
-            products.setDescripcion(cursor.getString(2));
-            products.setValor(cursor.getString(3));
-            products.setLocal(cursor.getString(4));
-            products.setExpedicion(cursor.getString(5));
-            products.setCategoria(cursor.getString(6));
-
-            listaProductos.add(products);
-        }
-        ObtenerLista();
-    }
-
-    private void ObtenerLista() {
-        listaInformacion = new ArrayList<String>();
-
-        for (int i = 0; i < listaProductos.size(); i++){
-            listaInformacion.add(listaProductos.get(i).getNombre() + "\n" +
-                    listaProductos.get(i).getValor() + " - " + listaProductos.get(i).getLocal());
-        }
+    public void next(View view) {
+        Intent intent = new Intent(this, FormRegisterOrder.class);
+        intent.putExtra("compra", (Serializable) carroCompras);
+        startActivity(intent);
     }
 }

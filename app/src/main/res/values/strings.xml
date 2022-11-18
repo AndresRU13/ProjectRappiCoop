@@ -12,7 +12,7 @@
     <string name="ok">OK</string>
     <string name="confirmacion">Confirma Contraseña</string>
     <string name="tituloG">RAPPICOOP</string>
-    <string name="welcome">Bienvenido</string>
+    <string name="welcome">BIENVENIDO</string>
     <string name="aProduct">Añadir Producto</string>
     <string name="Titulo_prod">AGREGAR PRODUCTO</string>
     <string name="nombre_pro">Nombre del Producto</string>
@@ -38,4 +38,11 @@
     <string name="detailsP">DETALLES</string>
     <string name="lOrder">Ver Pedidos Disponibles</string>
     <string name="Llegada">Entrega</string>
+    <string name="responde">La entrega ya se ha realizado</string>
+    <string name="aOrder">Aceptar Orden</string>
+    <string name="selection">SELECCIONAR PRODUCTOS</string>
+    <string name="RegisterOrder">Registrar Pedido</string>
+    <string name="Next">Siguiente</string>
+    <string name="welcomeRepart">BIENVENIDO DOMICILIARIO</string>
+    <string name="ePedido">Entregado</string>
 </resources>

@@ -4,25 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.unipiloto.projectrappicoop.DataBase.ConexionSQLiteHelper;
 import com.unipiloto.projectrappicoop.DataBase.Utilidades;
-import com.unipiloto.projectrappicoop.FormOrder.FormCreateOrder;
 import com.unipiloto.projectrappicoop.Home.Home_vendor;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.R;
 
-import java.util.ArrayList;
-
-public class Details extends AppCompatActivity {
+public class DetailsVendor extends AppCompatActivity {
 
     ConexionSQLiteHelper con;
     EditText nombre, descripcion, valor, local, expedicion, categoria;
@@ -32,7 +26,7 @@ public class Details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_details_vendor);
 
         con = new ConexionSQLiteHelper(this, "bd_rappicoop", null, 1);
 
@@ -53,7 +47,6 @@ public class Details extends AppCompatActivity {
             valor.setText( "$ " + prod.getValor().toString());
             local.setText(prod.getLocal().toString());
             expedicion.setText(prod.getExpedicion().toString());
-            categoria.setText(prod.getCategoria().toString());
         }
     }
 
@@ -93,6 +86,5 @@ public class Details extends AppCompatActivity {
         valor.setText("");
         local.setText("");
         expedicion.setText("");
-        categoria.setText("");
     }
 }

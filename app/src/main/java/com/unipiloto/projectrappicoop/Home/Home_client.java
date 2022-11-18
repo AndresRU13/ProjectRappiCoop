@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.unipiloto.projectrappicoop.FormOrder.FormCreateOrder;
+import com.unipiloto.projectrappicoop.FormProduct.FormSearchProductClient;
 import com.unipiloto.projectrappicoop.FormProduct.FormSearchProductVendor;
 import com.unipiloto.projectrappicoop.R;
 
@@ -19,7 +20,7 @@ public class Home_client extends AppCompatActivity {
     }
 
     public void searchProdruct(View view) {
-        Intent intent = new Intent(this, FormSearchProductVendor.class);
+        Intent intent = new Intent(this, FormSearchProductClient.class);
         startActivity(intent);
     }
 

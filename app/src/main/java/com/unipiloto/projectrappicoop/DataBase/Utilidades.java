@@ -27,11 +27,11 @@ public class Utilidades {
 
     public static final String ORD_ID = "ID";
     public static final String ORD_USUARIO = "NAME_USER";
+    public static final String ORD_COMPRA = "LIST_SHOP";
     public static final String ORD_VALOR = "VALUE";
-    public static final String ORD_PAGO = "WAY_TO_PAY";
     public static final String ORD_PROVEEDOR = "PROVIDER_NAME";
     public static final String ORD_DIRECCION = "LOCATION";
-    public static final String ORD_FECHA = "DATE";
+    public static final String ORD_FECHA_ENTREGA = "DATE";
 
     public static final String CREAR_TABLA_USUARIO = "CREATE TABLE " + TABLA_USUARIO +
             " (" + US_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + US_NOMBRE + " TEXT, " + US_EDAD +" TEXT, " +
@@ -42,7 +42,7 @@ public class Utilidades {
             PRO_CATEGORIA + " INTEGER, " + PRO_IMAGEN + " INTEGER)";
     public static final String CREAR_TABLA_ORDEN = "CREATE TABLE " + TABLA_ORDEN +
             " (" + ORD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " + ORD_USUARIO + " TEXT, " +
-            ORD_VALOR + " TEXT, " + ORD_PAGO + " INTEGER, " + ORD_PROVEEDOR +" TEXT, " +
-            ORD_DIRECCION + " TEXT, " + ORD_FECHA + " TEXT)";
+            ORD_COMPRA + " TEXT, " + ORD_VALOR + " TEXT, " + ORD_PROVEEDOR +" TEXT, " +
+            ORD_DIRECCION + " TEXT, " + ORD_FECHA_ENTREGA + " TEXT)";
 
 }
