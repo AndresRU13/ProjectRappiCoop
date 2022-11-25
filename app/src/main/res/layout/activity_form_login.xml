@@ -66,4 +66,13 @@
         android:onClick="register"
         />
 
+    <Button
+        android:id="@+id/reportes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Estadisticas/Reportes"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:onClick="reports"
+        />
 </LinearLayout>

@@ -39,14 +39,4 @@
         android:textSize="20dp"
         android:onClick="searchProdruct"
         />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="15dp"
-        android:text="@string/cOrder"
-        android:textSize="20dp"
-        android:onClick="createOrder"
-        />
 </LinearLayout>

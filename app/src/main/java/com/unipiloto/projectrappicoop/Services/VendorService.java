@@ -17,8 +17,8 @@ public class VendorService extends IntentService {
     public static final String EXTRA_MESSAGE = "mensaje";
     public static final int NOTIFICATION_ID = 5453;
 
-    public VendorService(String name) {
-        super(name);
+    public VendorService() {
+        super("VendorService");
     }
 
     @Override
@@ -44,14 +44,6 @@ public class VendorService extends IntentService {
                 .setAutoCancel(true);
 
         Intent actionIntent = new Intent(this, Home_vendor.class);
-
-        PendingIntent actionPendigIntent = PendingIntent.getActivity(
-                this,
-                0,
-                actionIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        builder.setContentIntent(actionPendigIntent);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, builder.build());

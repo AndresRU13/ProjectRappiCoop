@@ -20,6 +20,7 @@ import com.unipiloto.projectrappicoop.Home.Home_vendor;
 import com.unipiloto.projectrappicoop.Objects.Products;
 import com.unipiloto.projectrappicoop.Objects.Users;
 import com.unipiloto.projectrappicoop.R;
+import com.unipiloto.projectrappicoop.Reports;
 
 import java.util.ArrayList;
 
@@ -128,5 +129,10 @@ public class FormLogin extends AppCompatActivity {
             cursor.close();
 
         return res;
+    }
+
+    public void reports(View view) {
+        Intent intent = new Intent(this, Reports.class);
+        startActivity(intent);
     }
 }

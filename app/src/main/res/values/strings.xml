@@ -39,10 +39,13 @@
     <string name="lOrder">Ver Pedidos Disponibles</string>
     <string name="Llegada">Entrega</string>
     <string name="responde">La entrega ya se ha realizado</string>
-    <string name="aOrder">Aceptar Orden</string>
+    <string name="aOrder">ACEPTAR ORDEN</string>
     <string name="selection">SELECCIONAR PRODUCTOS</string>
     <string name="RegisterOrder">Registrar Pedido</string>
     <string name="Next">Siguiente</string>
     <string name="welcomeRepart">BIENVENIDO DOMICILIARIO</string>
     <string name="ePedido">Entregado</string>
+    <string name="LlegadaC">Entrega</string>
+    <string name="respondeC">Bon Appetit</string>
+    <string name="respondeV">Pedido Entregado</string>
 </resources>

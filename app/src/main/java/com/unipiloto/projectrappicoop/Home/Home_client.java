@@ -23,9 +23,4 @@ public class Home_client extends AppCompatActivity {
         Intent intent = new Intent(this, FormSearchProductClient.class);
         startActivity(intent);
     }
-
-    public void createOrder(View view) {
-        Intent intent = new Intent(this, FormCreateOrder.class);
-        startActivity(intent);
-    }
 }
